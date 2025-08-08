@@ -1,14 +1,14 @@
 # 📌 Working time
 
 **PT**:
-O **Working Time** é um sistema de controle de tempo de trabalho desenvolvido com Laravel, PostgreSQL e Docker. O objetivo principal é colocar em prática os estudos de programação que você aprendeu usando Laravel e seus recursos, como:
+O **Working Time** é um sistema de controle de tempo de trabalho desenvolvido com Laravel, PostgreSQL e Docker. O objetivo principal é colocar em prática os estudos de programação sobre Laravel e seus recursos, como:
 - Blade para construção de interfaces gráficas
 - Estrutura MVC, um padrão de arquitetura de desenvolvimento muito eficiente para pequenos projetos
 - Laravel UI facilita a construção de interfaces gráficas com Bootstrap
 - Laravel UI Auth ajuda a gerenciar a autenticação de usuários baseada em sessão
 
 **EN**:
-**Working Time** is a time tracking system developed with Laravel, PostgreSQL, and Docker. The main objective is to put into practice the programming skills you've learned using Laravel and its features, such as:
+**Working Time** is a time tracking system developed with Laravel, PostgreSQL, and Docker. Its main objective is to put into practice programming knowledge about Laravel and its features, such as:
 - Blade for building graphical interfaces
 - MVC structure, a very efficient development architecture pattern for small projects
 - Laravel UI makes it easy to build graphical interfaces with Bootstrap
