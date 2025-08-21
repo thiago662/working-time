@@ -68,7 +68,7 @@ O **Working Time** é um sistema de controle de tempo de trabalho desenvolvido c
    - Rodar o comando `docker compose up -d` no terminal, isso ira subir uma maquina virtual com um banco de dados PostgreSQL.
 
 5. **Rodar migrations**:
-   - Para criar a estrutura do banco de dados basta rodar o comando `php artisan migrete --seed` que vai rodas todas as migrations no banco criando sua estrutura base.
+   - Para criar a estrutura do banco de dados basta rodar o comando `php artisan migrate --seed` que vai rodas todas as migrations no banco criando sua estrutura base.
 
 6. **Execute o projeto**:
    ```bash
@@ -96,7 +96,7 @@ O **Working Time** é um sistema de controle de tempo de trabalho desenvolvido c
    - Run the `docker compose up -d` command in the terminal. This will create a virtual machine with a PostgreSQL database.
 
 5. **Run migrations**:
-   - To create the database structure, simply run the `php artisan migrete --seed` command, which will run all migrations in the database, creating its base structure.
+   - To create the database structure, simply run the `php artisan migrate --seed` command, which will run all migrations in the database, creating its base structure.
 
 6. **Run the project**: 
    ```bash 
