@@ -58,6 +58,7 @@ O **Working Time** é um sistema de controle de tempo de trabalho desenvolvido c
 2. **Instale as dependências**:
    ```bash
    composer install
+   php artisan key:generate
    ```
 
 3. **Configure o ambiente**:
@@ -67,7 +68,7 @@ O **Working Time** é um sistema de controle de tempo de trabalho desenvolvido c
    - Rodar o comando `docker compose up -d` no terminal, isso ira subir uma maquina virtual com um banco de dados PostgreSQL.
 
 5. **Rodar migrations**:
-   - Para criar a estrutura do banco de dados basta rodar o comando `php artisan migrete` que vai rodas todas as migrations no banco criando sua estrutura base.
+   - Para criar a estrutura do banco de dados basta rodar o comando `php artisan migrete --seed` que vai rodas todas as migrations no banco criando sua estrutura base.
 
 6. **Execute o projeto**:
    ```bash
