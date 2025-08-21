@@ -75,9 +75,11 @@ class WorkDayController extends Controller
      */
     public function show(string $id)
     {
-        $workDay = WorkDay::with(['checkpoints' => function ($query) {
+        $workDay = WorkDay::query()->with(['checkpoints' => function ($query) {
             $query->orderBy('checked_at', 'asc');
-        }])->find($id);
+        }])
+            ->where('user_id', Auth::user()->id)
+            ->find($id);
 
         return view('work-day.show', compact('workDay'));
     }
@@ -90,7 +92,7 @@ class WorkDayController extends Controller
      */
     public function edit(string $id)
     {
-        $workDay = WorkDay::find($id);
+        $workDay = WorkDay::query()->where('user_id', Auth::user()->id)->find($id);
 
         return view('work-day.edit', compact('workDay'));
     }
@@ -104,7 +106,7 @@ class WorkDayController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $workDay = WorkDay::find($id);
+        $workDay = WorkDay::query()->where('user_id', Auth::user()->id)->find($id);
 
         $workDay->date = Carbon::parse($request->date)->format('Y-m-d');
 
@@ -121,7 +123,7 @@ class WorkDayController extends Controller
      */
     public function destroy(string $id)
     {
-        $workDay = WorkDay::find($id);
+        $workDay = WorkDay::query()->where('user_id', Auth::user()->id)->find($id);
         $workDay->delete();
 
         return str_contains(url()->previous(), 'work-day/') ? redirect()->route('work-day.index') : redirect()->to(url()->previous());

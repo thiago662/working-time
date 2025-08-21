@@ -28,7 +28,7 @@ class CheckpointController extends Controller
     public function create(Request $request)
     {
         return view('checkpoint.create', [
-            'workDay' => WorkDay::query()->find($request->work_day_id),
+            'workDay' => WorkDay::query()->where('user_id', Auth::user()->id)->find($request->work_day_id),
         ]);
     }
 
@@ -61,7 +61,7 @@ class CheckpointController extends Controller
      */
     public function destroy(string $id)
     {
-        $workDay = Checkpoint::find($id);
+        $workDay = Checkpoint::query()->where('user_id', Auth::user()->id)->find($id);
         $workDay->delete();
 
         return redirect()->back();

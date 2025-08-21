@@ -12,30 +12,34 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('work-day.destroy', $workDay->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <a type="button" class="btn btn-primary" aria-current="page" href="{{ route('checkpoint.create', ['work_day_id' => $workDay->id]) }}">{{ __('Registrar ponto') }}</a>
-                        <input type="submit" class="btn btn-danger" value="{{ __('Excluir') }}">
-                        <p>{{ __('Data: ') }}{{ $workDay->date }}</p>
-                    </form>
+                    @if (is_null($workDay))
+                        {{ __('Dia de trabalho não encontrado') }}
+                    @else
+                        <form action="{{ route('work-day.destroy', $workDay->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <a type="button" class="btn btn-primary" aria-current="page" href="{{ route('checkpoint.create', ['work_day_id' => $workDay->id]) }}">{{ __('Registrar ponto') }}</a>
+                            <input type="submit" class="btn btn-danger" value="{{ __('Excluir') }}">
+                            <p>{{ __('Data: ') }}{{ $workDay->date }}</p>
+                        </form>
 
-                    <p>{{ __('Pontos do dia') }}</p>
-                    @foreach ($workDay->checkpoints as $index => $checkpoint)
-                        <p>
-                            <form action="{{ route('checkpoint.destroy', $checkpoint->id) }}" method="POST">
-                                @if ($index % 2 == 0)
-                                    <span class="badge text-bg-success">{{ __('Entrada') }}</span>
-                                @else
-                                    <span class="badge text-bg-danger">{{ __('Saida') }}</span>
-                                @endif
-                                {{ $checkpoint->checked_at }}
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" class="btn btn-danger btn-sm" value="{{ __('Excluir') }}">
-                            </form>
-                        </p>
-                    @endforeach
+                        <p>{{ __('Pontos do dia') }}</p>
+                        @foreach ($workDay->checkpoints as $index => $checkpoint)
+                            <p>
+                                <form action="{{ route('checkpoint.destroy', $checkpoint->id) }}" method="POST">
+                                    @if ($index % 2 == 0)
+                                        <span class="badge text-bg-success">{{ __('Entrada') }}</span>
+                                    @else
+                                        <span class="badge text-bg-danger">{{ __('Saida') }}</span>
+                                    @endif
+                                    {{ $checkpoint->checked_at }}
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-danger btn-sm" value="{{ __('Excluir') }}">
+                                </form>
+                            </p>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

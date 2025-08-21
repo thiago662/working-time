@@ -31,6 +31,7 @@ class HomeController extends Controller
             ->with(['checkpoints' => function ($query) {
                 $query->select('id', 'user_id', 'work_day_id', 'checked_at')->orderBy('checked_at', 'asc');
             }])
+            ->where('user_id', Auth::user()->id)
             ->where('date', Carbon::now()->format('Y-m-d'))
             ->first();
 
@@ -47,6 +48,7 @@ class HomeController extends Controller
     {
         $today = Carbon::now()->format('Y-m-d');
         $workDay = WorkDay::query()
+            ->where('user_id', Auth::user()->id)
             ->where('date', $today)
             ->first();
 
